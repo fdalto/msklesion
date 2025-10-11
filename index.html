@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coleta Lesão Muscular — Protótipo</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --accent:#0b63d4;
+      --muted:#666;
+      --maxwidth:1100px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, Arial, sans-serif;background:var(--bg);margin:0;padding:18px;color:#111;display:flex;justify-content:center;}
+    .container{width:100%;max-width:var(--maxwidth);padding:8px;}
+    h1{margin:0 0 12px;font-size:22px;}
+    .main{display:flex;gap:16px;align-items:flex-start;}
+    .left,.right{background:var(--card);border-radius:10px;padding:14px;box-shadow:0 2px 8px rgba(20,30,40,0.06);}
+    .left{flex:1}
+    .right{width:360px;min-width:260px;display:flex;flex-direction:column;gap:12px;align-items:stretch}
+    label{display:block;font-weight:600;margin-top:8px;margin-bottom:6px;font-size:13px;}
+    select,input[type="number"],input[type="text"],textarea{width:100%;padding:8px;border:1px solid #e2e6ee;border-radius:6px;font-size:14px;}
+    .inline{display:flex;gap:8px;align-items:center}
+    .small{font-size:13px;color:var(--muted)}
+    .small-muted{font-size:12px;color:#888}
+    button{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer;}
+    .controls{display:flex;gap:8px;align-items:center;margin-top:12px}
+    pre{background:#0f1724;color:#e6eef8;padding:12px;border-radius:8px;overflow:auto;font-size:13px}
+    .note-sim{background:#fff7e6;border-left:4px solid #f6b042;padding:10px;border-radius:6px;margin-top:8px}
+    .vars-table{width:100%;border-collapse:collapse;margin-top:8px}
+    .vars-table th,.vars-table td{border:1px solid #eee;padding:8px;text-align:left;font-size:13px}
+    .vars-table th{background:#f3f6fb}
+    .spinner{width:18px;height:18px;border-radius:50%;border:3px solid #ddd;border-top-color:var(--accent);animation:spin 1s linear infinite;display:inline-block}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    /* Score box */
+    .score-box{background:#f0f6ff;border:1px solid rgba(11,99,212,0.12);padding:12px;border-radius:8px;text-align:center}
+    .big{font-size:20px;font-weight:800;color:#0b63d4;margin:6px 0}
+    .bamic-note{font-size:13px;color:#333;margin-top:6px}
+    footer{font-size:12px;color:var(--muted);margin-top:10px;text-align:center}
+
+    /* logo */
+    .logo-wrap{display:flex;justify-content:center;align-items:center;padding:8px}
+    .logo-wrap img{width:50%;height:auto;max-width:220px;object-fit:contain}
+
+    /* responsive: stack on small screens */
+    @media (max-width:900px){
+      .main{flex-direction:column;}
+      .right{width:100%}
+      .left{order:2}
+      .right{order:1}
+      .logo-wrap img{width:40%}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Coleta de Dados — Lesão Muscular (Protótipo)</h1>
+
+    <div class="main">
+      <!-- LEFT: form -->
+      <div class="left" id="leftCol">
+        <div class="small">Formulário em coluna única. Clique em <strong>Calcular</strong>. Simulação apenas para UI/integração.</div>
+
+        <form id="injuryForm" onsubmit="return false;" style="margin-top:8px;">
+          <div>
+            <label for="muscle">Músculo acometido</label>
+            <select id="muscle">
+              <option value="1">bíceps femoral</option>
+              <option value="2">semiteníneo</option>
+              <option value="3">semimembranaceo</option>
+              <option value="4">retofemoral</option>
+              <option value="5">quadriceps (exceto RF)</option>
+              <option value="6">adutor magno</option>
+              <option value="7">adutor longo</option>
+              <option value="8">adutores (exceto AL AM)</option>
+              <option value="9">gastrocnêmio medial</option>
+              <option value="10">gastrocnêmio lateral</option>
+              <option value="11">sóleo</option>
+              <option value="12">glúteo máximo</option>
+              <option value="13">glúteo médio</option>
+              <option value="14">outro músculo</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="mechanism">Mecanismo</label>
+            <select id="mechanism">
+              <option value="1">lesão indireta em sprinting</option>
+              <option value="2">lesão indireta em stretching</option>
+              <option value="3">trauma direto (contusão)</option>
+              <option value="4">overuse / fadiga</option>
+              <option value="5">desconhecido</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="segment">Localização no ventre muscular</label>
+            <select id="segment">
+              <option value="1">proximal (P)</option>
+              <option value="2">média (M)</option>
+              <option value="3">distal (D)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="anatomic">Localização dentro do músculo (estrutura)</label>
+            <select id="anatomic">
+              <option value="1">apenas tecido muscular (m)</option>
+              <option value="2">envolve tecido conjuntivo (c1)</option>
+              <option value="3">envolve junção miotendínea (JMT)</option>
+              <option value="4">envolve tendão / intratendíneo</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="volumePercent">Volume de extensão de edema estimado (% do volume muscular)</label>
+            <div class="inline">
+              <input id="volumePercent" type="number" min="0" max="100" value="0" />
+              <div class="small-muted"><span id="volumePercentLabel">0</span>%</div>
+            </div>
+          </div>
+
+          <div>
+            <label for="edemaLength">Extensão de edema/alteração estimada longitudinal (mm)</label>
+            <input id="edemaLength" type="number" min="0" value="0" />
+          </div>
+
+          <div>
+            <label for="ruptureGap">Extensão de RUPTURA / GAP estimada longitudinal (mm)</label>
+            <input id="ruptureGap" type="number" min="0" value="0" />
+          </div>
+
+          <div>
+            <label for="mlgr">Grau (G) de alteração segundo sistema MLG-R (Valle et al.)</label>
+            <select id="mlgr">
+              <option value="0">Sinais clínicos sem achado em RM (G0)</option>
+              <option value="1">Edema intersticial leve (G1)</option>
+              <option value="2">Ruptura parcial de fibras (G2)</option>
+              <option value="3">Ruptura com Gap mensurável (G3)</option>
+              <option value="4">Ruptura com ruptura do tecido conjuntivo (G3r)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="tendonInvolvement">Envolvimento tendíneo</label>
+            <select id="tendonInvolvement">
+              <option value="0">sem envolvimento tendíneo</option>
+              <option value="1">lesão parcial baixo grau tendão</option>
+              <option value="2">ruptura de mais de 50% do tendão</option>
+              <option value="3">ruptura completa do tendão</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="completeTear">Presença de ruptura completa conhecida?</label>
+            <select id="completeTear">
+              <option value="0">Não</option>
+              <option value="1">Sim (ruptura completa)</option>
+              <option value="2">Suspeita</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="reinjury">Re-lesão no mesmo local (últimos 6 meses)?</label>
+            <select id="reinjury">
+              <option value="0">Não</option>
+              <option value="1">Sim</option>
+            </select>
+          </div>
+
+          <div style="margin-top:10px;">
+            <label for="apiEndpoint">Endpoint da API (para configurar depois)</label>
+            <input id="apiEndpoint" type="text" placeholder="https://meu-backend/api/predict (simulação)" />
+            <div class="small">O formulário monta o JSON abaixo; o botão "Simular Envio JSON" demonstra o fluxo.</div>
+          </div>
+
+          <div class="controls">
+            <button id="btnCalc" type="button">Calcular (Simulação)</button>
+            <button id="btnSend" type="button">Simular Envio JSON</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- RIGHT: logo + score only -->
+      <div class="right" id="rightCol">
+        <div class="logo-wrap">
+          <!-- coloque seu arquivo logo.jpg na mesma pasta -->
+          <img src="logo.jpg" alt="Logo" id="siteLogo" />
+        </div>
+
+        <div class="score-box">
+          <div class="big" id="scoreDisplay">Score: — / 100</div>
+          <div class="big" id="bamicDisplay">Lesão de Classificação: —</div>
+          <div class="bamic-note" id="bamicSimNote" style="color:#444;">
+            <!-- Nota sobre simulação preenchida pelo JS -->
+          </div>
+          <div style="margin-top:8px" id="processingArea"></div>
+          <div style="margin-top:10px"><strong>Estimativa de RTP (simulada):</strong> <div id="rtpDisplay" style="margin-top:6px">—</div></div>
+        </div>
+        <div style="margin-top:12px" class="note-sim">
+          <strong>Atenção — isso é uma SIMULAÇÃO.</strong>
+          <div class="small">Os resultados (SCORE, BAMIC e RTP) são gerados por um back-end simulado com regras heurísticas para demonstrar integração front-end → JSON → API. Não use como avaliação clínica.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEW: below main -> JSON, API response, Vars table -->
+    <div style="margin-top:16px;display:flex;gap:16px;flex-direction:column;">
+      <div style="background:var(--card);border-radius:10px;padding:12px;box-shadow:0 2px 8px rgba(20,30,40,0.06);">
+        <label>JSON montado para envio (exemplo)</label>
+        <pre id="jsonOut">{ }</pre>
+      </div>
+
+      <div style="background:var(--card);border-radius:10px;padding:12px;box-shadow:0 2px 8px rgba(20,30,40,0.06);">
+        <label>Saída simulada da API (response)</label>
+        <pre id="apiOut">{ }</pre>
+      </div>
+
+      <div style="background:var(--card);border-radius:10px;padding:12px;box-shadow:0 2px 8px rgba(20,30,40,0.06);">
+        <label>Tabela de variáveis (valor numérico e label)</label>
+        <table class="vars-table" id="varsTable">
+          <thead><tr><th>Campo</th><th>Código</th><th>Label / Valor</th></tr></thead>
+          <tbody><!-- preenchido por JS --></tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer style="margin-top:12px">
+      Cálculo do BAMIC aqui é demonstrativo. Referência: <em>The British Athletics Muscle Injury Classification (BAMIC/BAC)</em>.
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
