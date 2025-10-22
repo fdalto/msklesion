@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cronograma de Medicina Preventiva — Saúde Masculina</title>
+  <style>
+    :root{
+      --bg:#0b0f14; --card:#111826; --ink:#e9eef6; --muted:#b9c3d1; --accent:#4cc3ff;
+      --ok:#77e6b6; --warn:#ffd166; --bad:#ff6b6b; --line:#223044;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink); background:linear-gradient(180deg,#0a0f16 0%, #0b121b 50%, #0b0f14 100%);
+    }
+    .container{max-width:980px; margin:40px auto; padding:0 20px}
+    header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:24px}
+    h1{font-size:clamp(22px,3.4vw,34px); margin:0; letter-spacing:.2px}
+    .sub{color:var(--muted); font-size:14px}
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
+    button, .btn{appearance:none; border:1px solid var(--line); background:transparent; color:var(--ink); padding:10px 14px; border-radius:12px; cursor:pointer}
+    .btn-accent{border-color:transparent; background:linear-gradient(90deg, #1b77ff, #4cc3ff); color:#00122a; font-weight:700}
+    .card{background:rgba(17,24,38,.8); border:1px solid var(--line); border-radius:16px; padding:18px 18px; box-shadow:0 6px 24px rgba(0,0,0,.25);}
+    .grid{display:grid; grid-template-columns:1fr; gap:16px}
+    @media (min-width:880px){ .grid{grid-template-columns:1fr 1fr} }
+    h2{font-size:clamp(18px,2.2vw,22px); margin:0 0 12px 0}
+    h3{font-size:16px; margin:18px 0 8px}
+    ul{margin:0 0 0 18px; padding:0}
+    li{margin:6px 0}
+    .tag{display:inline-block; font-size:12px; color:#08111d; background:var(--ok); padding:2px 8px; border-radius:999px; font-weight:700}
+    .warn{background:var(--warn)}
+    .bad{background:var(--bad)}
+    .muted{color:var(--muted)}
+    .toc{display:flex; gap:8px; flex-wrap:wrap}
+    .toc a{color:var(--ink); text-decoration:none; border:1px solid var(--line); padding:8px 10px; border-radius:10px}
+    .foot{margin-top:28px; font-size:13px}
+    .hr{height:1px; background:var(--line); margin:24px 0}
+    .age{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .age .label{font-weight:800; letter-spacing:.2px}
+    .pill{font-size:12px; color:#02111f; background:var(--accent); padding:2px 8px; border-radius:999px; font-weight:800}
+    details summary{cursor:pointer; list-style:none}
+    details summary::-webkit-details-marker{display:none}
+    details[open] summary .chev{transform:rotate(90deg)}
+    .chev{display:inline-block; transition:.2s; margin-right:8px}
+    /* Print styles */
+    @media print{
+      body{background:#fff; color:#000}
+      .container{max-width:100%; margin:0; padding:0}
+      header .actions{display:none}
+      .card{background:#fff; border-color:#ddd; box-shadow:none}
+      .grid{grid-template-columns:1fr 1fr}
+      a{text-decoration:none; color:#000}
+      .tag,.pill{color:#000; background:#eee; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+      .hr{background:#ddd}
+      @page { size: A4; margin: 16mm }
+      .page-break{break-after:page}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>🩺 Cronograma de Medicina Preventiva — Saúde Masculina</h1>
+        <div class="sub">Baseado em diretrizes brasileiras (SBC, SBD, INCA, SBACV, PCDTs) e posicionamentos AHA/ACC. Conteúdo educativo — personalize conforme risco individual.</div>
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="window.print()">🖨️ Imprimir</button>
+        <a class="btn btn-accent" href="#apendice">Ir ao Apêndice</a>
+      </div>
+    </header><section class="card">
+  <h2>Índice</h2>
+  <nav class="toc">
+    <a href="#ate30">Até 30 anos</a>
+    <a href="#30a39">30–39</a>
+    <a href="#40a49">40–49</a>
+    <a href="#50a59">50–59</a>
+    <a href="#60a64">60–64</a>
+    <a href="#65a75">65–75</a>
+    <a href="#75mais">Acima de 75</a>
+    <a href="#apendice">Apêndice (Comorbidades)</a>
+  </nav>
+</section>
+
+<div class="hr"></div>
+
+<section id="faixas" class="grid">
+  <!-- Até 30 -->
+  <article id="ate30" class="card">
+    <div class="age"><span class="label">👦 Até 30 anos</span><span class="pill">Baixo risco: foco em prevenção</span></div>
+    <ul>
+      <li><b>Consulta clínica</b> e <b>PA</b> em todas as consultas (confirmar elevação com MAPA/MRPA quando indicado).</li>
+      <li><b>Lipídios</b>: pelo menos uma dosagem na vida adulta jovem; repetir conforme risco familiar/metabólico.</li>
+      <li><b>Glicemia/HbA1c</b>: somente se houver fatores de risco (obesidade, história familiar, sedentarismo, HAS, dislipidemia).</li>
+      <li><b>IST</b> (HIV, sífilis, hepatites): testagem conforme comportamento de risco.</li>
+      <li><b>Imunizações</b>: manter calendário do <abbr title="Programa Nacional de Imunizações">PNI</abbr> atualizado.</li>
+    </ul>
+  </article>
+
+  <!-- 30–39 -->
+  <article id="30a39" class="card">
+    <div class="age"><span class="label">👨 30–39 anos</span><span class="pill">Consolidar hábitos + rastrear DM ≥35</span></div>
+    <ul>
+      <li><b>PA</b>: anual; incentivar automedição domiciliar.</li>
+      <li><b>Lipídios</b>: a cada <b>4–6 anos</b> se baixo risco; intervalos menores se risco ≥ intermediário (pode considerar Lp(a) em seleções).</li>
+      <li><b>Diabetes</b>: iniciar rastreio aos <b>35 anos</b> (glicemia jejum/HbA1c); até 3 anos se normal e baixo risco.</li>
+      <li><b>Vacinas</b> e <b>IST</b>: conforme risco individual.</li>
+      <li><b>Estilo de vida</b>: peso, alimentação, atividade física, álcool, sono.</li>
+    </ul>
+  </article>
+
+  <!-- 40–49 -->
+  <article id="40a49" class="card">
+    <div class="age"><span class="label">👨‍🦱 40–49 anos</span><span class="pill">Ajustar risco global</span></div>
+    <ul>
+      <li><b>PA</b>: anual + cálculo do <b>risco cardiovascular global</b>.</li>
+      <li><b>Lipídios</b>: a cada <b>2–4 anos</b>; considerar <b>Escore de Cálcio (CAC)</b> quando houver dúvida terapêutica.</li>
+      <li><b>Diabetes</b>: periodicidade conforme risco (anual se pré-DM).</li>
+      <li><b>Câncer colorretal</b>: discutir início entre <b>45–50</b> (iFOBT periódico ou colonoscopia).</li>
+      <li><b>Próstata</b>: <span class="tag warn">decisão compartilhada</span> em alto risco familiar (não rastreio populacional).</li>
+      <li><b>Vacinas</b> e <b>IST</b>: manter atualizadas.</li>
+    </ul>
+  </article>
+
+  <!-- 50–59 -->
+  <article id="50a59" class="card">
+    <div class="age"><span class="label">👨‍🦳 50–59 anos</span><span class="pill">Rastreios estruturados</span></div>
+    <ul>
+      <li><b>PA</b>: anual; usar <b>MAPA/MRPA</b> se dúvida diagnóstica/efeito avental.</li>
+      <li><b>Lipídios</b>: <b>1–2 anos</b> se risco ≥ intermediário; <b>CAC</b> pode refinar decisão.</li>
+      <li><b>Diabetes</b>: manter rastreio (anual se pré-DM; até 3 anos se normal/baixo risco).</li>
+      <li><b>Câncer colorretal</b>: <b>oferecer</b> rastreamento (iFOBT periódico ou colonoscopia).</li>
+      <li><b>Próstata</b>: manter <span class="tag warn">decisão compartilhada</span>.</li>
+      <li><b>Densitometria óssea (DMO)</b>: indicar se fratura por fragilidade ou fatores de alto risco (hipogonadismo, corticoide crônico, DRC, baixo IMC).</li>
+    </ul>
+  </article>
+
+  <!-- 60–64 -->
+  <article id="60a64" class="card">
+    <div class="age"><span class="label">👴 60–64 anos</span><span class="pill">Manter + intensificar quando indicado</span></div>
+    <ul>
+      <li>Manter rastreios da faixa anterior.</li>
+      <li><b>Colorretal</b>: continuar até <b>74–75</b> conforme benefício esperado.</li>
+      <li><b>DMO</b>: considerar com maior frequência se fatores de risco presentes.</li>
+      <li><b>Vacinas do idoso</b>: influenza anual, pneumocócicas, dT/dTpa, hepatite B se suscetível.</li>
+    </ul>
+  </article>
+
+  <!-- 65–75 -->
+  <article id="65a75" class="card">
+    <div class="age"><span class="label">👴‍♂️ 65–75 anos</span><span class="pill">Rastreiros pontuais</span></div>
+    <ul>
+      <li><b>AAA</b>: <b>USG abdominal único</b> se homem com história de tabagismo (ativo ou prévio).</li>
+      <li><b>Colorretal</b>: manter até 74–75.</li>
+      <li><b>Próstata</b>: reavaliar necessidade (geralmente encerrar após 75 ou baixa expectativa de vida).</li>
+      <li><b>DMO</b>: manter conforme risco.</li>
+    </ul>
+  </article>
+
+  <!-- >75 -->
+  <article id="75mais" class="card">
+    <div class="age"><span class="label">👴‍🦳 Acima de 75 anos</span><span class="pill">Individualizar</span></div>
+    <ul>
+      <li>Individualizar conforme fragilidade/preferências/expectativa de vida.</li>
+      <li>Manter controle de <b>PA, DM, lipídios</b>, vacinação e prevenção de quedas.</li>
+    </ul>
+  </article>
+</section>
+
+<div class="hr page-break"></div>
+
+<!-- Apêndice -->
+<section id="apendice" class="grid">
+  <article class="card">
+    <h2>📎 Apêndice — Exames por Comorbidades</h2>
+    <h3>🧍‍♂️ Obesidade / Síndrome Metabólica</h3>
+    <ul>
+      <li><b>Fazer</b>: perfil lipídico, glicemia/HbA1c, função hepática; <b>US abdome</b> para avaliar esteatose/esteato-hepatite (quando houver disfunção metabólica).</li>
+      <li><b>Evitar de rotina</b>: TSH e <b>US de tireoide</b> sem suspeita clínica (nódulo palpável, bócio, sinais de disfunção).</li>
+    </ul>
+    <h3>💓 Hipertensão Arterial</h3>
+    <ul>
+      <li><b>Avaliar lesão-alvo</b>: ECG, creatinina/eTFG, potássio, urina tipo I.</li>
+      <li><b>Doppler/IMT de carótida</b>: não usar como rastreio de rotina; reservar para <b>suspeita clínica</b> (sopro, AIT/AVC) ou estratificação muito específica.</li>
+    </ul>
+    <h3>🚬 Tabagismo importante / ex-fumante pesado</h3>
+    <ul>
+      <li><b>Considerar</b>: <b>LDCT</b> (tomografia de baixa dose) para câncer de pulmão em alto risco; sempre junto de programa de cessação.</li>
+    </ul>
+    <h3>🧠 Declínio cognitivo</h3>
+    <ul>
+      <li><b>Fazer</b>: triagem cognitiva, avaliação clínica global; encaminhar <b>Neurologia</b>.</li>
+      <li><b>Imagem</b>: considerar <b>RM de encéfalo</b> diante de progressão ou sinais de alarme.</li>
+    </ul>
+    <h3>💩 História pessoal de câncer de cólon / pólipos avançados</h3>
+    <ul>
+      <li><b>Vigilância padrão</b>: <b>colonoscopia</b> com intervalos definidos pelo achado prévio.</li>
+      <li><b>Colonografia por TC</b> (cólon virtual): quando colonoscopia for incompleta/contraindicada.</li>
+    </ul>
+    <h3>🫀 Aneurisma de Aorta Abdominal</h3>
+    <ul>
+      <li><b>US abdominal único</b> em homens <b>65–75</b> com história de tabagismo.</li>
+    </ul>
+    <h3>🧬 IMT / Doppler de Carótida — Nota</h3>
+    <ul>
+      <li><b>Não recomendado</b> para rastreamento universal em assintomáticos.</li>
+      <li><b>Pode ser considerado</b> em risco <b>intermediário</b> quando o resultado possa mudar a conduta; presença de <b>placa</b> tem maior valor que IMT isolado.</li>
+    </ul>
+  </article>
+  <article class="card">
+    <h2>ℹ️ Notas & Boas Práticas</h2>
+    <ul>
+      <li><b>Check-ups de imagem “genéricos”</b> (US geral, RX de rotina) não são recomendados sem indicação clínica ou protocolo específico (AAA, DMO, LDCT, etc.).</li>
+      <li><b>Decisão compartilhada</b>: especialmente em próstata e início de rastreio colorretal entre 45–50 anos.</li>
+      <li><b>Intervalos</b> podem ser encurtados por alto risco (familiar, metabólico, tabagismo, comorbidades).</li>
+      <li><b>Personalização</b> conforme história clínica, medicamentos, e preferências.</li>
+    </ul>
+    <h3>Referências (seleção)</h3>
+    <ul class="muted">
+      <li>Diretrizes Brasileiras: HAS (SBC/SBH); Dislipidemias (SBC 2025); SBD (rastreio DM); INCA (detecção precoce: cólon/próstata/pulmão); SBACV (AAA); PCDT Osteoporose; PNI/SBIm (vacinas).</li>
+      <li>AHA/ACC: posicionamentos sobre CIMT/placa carotídea e uso de CAC para refino de risco.</li>
+    </ul>
+  </article>
+</section>
+
+<footer class="foot muted">
+  Última atualização: <span id="today"></span>. Este material tem caráter informativo e não substitui avaliação clínica individual.
+</footer>
+
+  </div>  <script>
+    // Data de atualização dinâmica
+    const d = new Date();
+    const fmt = d.toLocaleDateString('pt-BR', { year:'numeric', month:'long', day:'2-digit' });
+    document.getElementById('today').textContent = fmt;
+  </script></body>
+</html>
