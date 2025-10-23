@@ -41,4 +41,4 @@ British Athletics Muscle Injury Classification (BAMIC)
 
 Munich Muscle Injury Classification
 
-Access page in : 
+Access page in : https://fdalto.github.io/msklesion/index.html
