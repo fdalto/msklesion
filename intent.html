@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teste de Intents Android - Leapmotor C10</title>
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #111;
+      color: #f2f2f2;
+    }
+
+    body {
+      margin: 0;
+      padding: 18px;
+      line-height: 1.45;
+    }
+
+    h1 {
+      font-size: 1.35rem;
+      margin: 0 0 8px;
+    }
+
+    p {
+      color: #ccc;
+      margin: 8px 0 16px;
+    }
+
+    .section {
+      margin: 18px 0;
+      padding: 14px;
+      border: 1px solid #333;
+      border-radius: 12px;
+      background: #1b1b1b;
+    }
+
+    .section h2 {
+      font-size: 1.05rem;
+      margin: 0 0 10px;
+      color: #fff;
+    }
+
+    a.button {
+      display: block;
+      padding: 14px 12px;
+      margin: 8px 0;
+      border-radius: 10px;
+      background: #2d2d2d;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      border: 1px solid #444;
+    }
+
+    a.button:active {
+      background: #444;
+    }
+
+    button {
+      background: #2d2d2d;
+      color: #fff;
+      border: 1px solid #444;
+    }
+
+    code {
+      color: #9fe870;
+      word-break: break-all;
+    }
+
+    .small {
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Teste de Intents Android — Leapmotor C10</h1>
+
+  <p>
+    Abra este arquivo no Vivaldi da central. Toque nos botões abaixo para testar
+    se o navegador consegue chamar telas internas do Android/LeapOS.
+  </p>
+
+  <div class="section">
+    <h2>Configurações gerais</h2>
+
+    <a class="button" href="intent:#Intent;action=android.settings.SETTINGS;end">
+      Abrir Settings geral
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.DEVICE_INFO_SETTINGS;end">
+      Informações do dispositivo
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.DISPLAY_SETTINGS;end">
+      Configurações de tela
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.SOUND_SETTINGS;end">
+      Configurações de som
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.DATE_SETTINGS;end">
+      Data e hora
+    </a>
+  </div>
+
+  <div class="section">
+    <h2>Apps e permissões</h2>
+
+    <a class="button" href="intent:#Intent;action=android.settings.APPLICATION_SETTINGS;end">
+      Lista de aplicativos
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.MANAGE_APPLICATIONS_SETTINGS;end">
+      Gerenciar aplicativos
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.MANAGE_UNKNOWN_APP_SOURCES;end">
+      Instalar apps desconhecidos
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.SECURITY_SETTINGS;end">
+      Segurança
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.PRIVACY_SETTINGS;end">
+      Privacidade
+    </a>
+  </div>
+
+  <div class="section">
+    <h2>Armazenamento e arquivos</h2>
+
+    <a class="button" href="intent:#Intent;action=android.settings.INTERNAL_STORAGE_SETTINGS;end">
+      Armazenamento interno
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.MEMORY_CARD_SETTINGS;end">
+      Cartão/USB/armazenamento externo
+    </a>
+
+    <a class="button" href="content://com.android.externalstorage.documents/root/primary">
+      Tentar abrir storage primário via content://
+    </a>
+
+    <a class="button" href="file:///storage/">
+      Tentar abrir file:///storage/
+    </a>
+
+    <a class="button" href="file:///sdcard/Download/">
+      Tentar abrir Downloads local
+    </a>
+  </div>
+
+  <div class="section">
+    <h2>Rede e conectividade</h2>
+
+    <a class="button" href="intent:#Intent;action=android.settings.WIFI_SETTINGS;end">
+      Wi-Fi
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.BLUETOOTH_SETTINGS;end">
+      Bluetooth
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.WIRELESS_SETTINGS;end">
+      Conexões sem fio
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.AIRPLANE_MODE_SETTINGS;end">
+      Modo avião
+    </a>
+  </div>
+
+  <div class="section">
+    <h2>Desenvolvedor / diagnóstico</h2>
+
+    <a class="button" href="intent:#Intent;action=android.settings.APPLICATION_DEVELOPMENT_SETTINGS;end">
+      Opções do desenvolvedor
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.USAGE_ACCESS_SETTINGS;end">
+      Acesso de uso
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.ACCESSIBILITY_SETTINGS;end">
+      Acessibilidade
+    </a>
+
+    <a class="button" href="intent:#Intent;action=android.settings.NOTIFICATION_LISTENER_SETTINGS;end">
+      Acesso a notificações
+    </a>
+  </div>
+
+  <div class="section">
+    <h2>Teste de File Picker via JavaScript</h2>
+
+    <p class="small">
+      Estes botões testam se o Vivaldi expõe APIs modernas de seleção de arquivo/pasta.
+      Não executam arquivos; apenas tentam listar o que você selecionar manualmente.
+    </p>
+
+    <button onclick="testSupport()" style="width:100%;padding:14px;border-radius:10px;font-size:1rem;">
+      Testar suporte
+    </button>
+
+    <button onclick="openFile()" style="width:100%;padding:14px;border-radius:10px;font-size:1rem;margin-top:8px;">
+      Escolher arquivo
+    </button>
+
+    <button onclick="openDir()" style="width:100%;padding:14px;border-radius:10px;font-size:1rem;margin-top:8px;">
+      Escolher pasta
+    </button>
+
+    <pre id="out" style="white-space:pre-wrap;background:#0b0b0b;padding:10px;border-radius:8px;overflow:auto;"></pre>
+  </div>
+
+  <div class="section">
+    <h2>Como interpretar</h2>
+
+    <p class="small">
+      Se um botão abrir uma tela do Android, o Vivaldi permite intents.
+      Se abrir “Instalar apps desconhecidos” ou “Aplicativos”, esse é o achado mais relevante
+      para sideload legítimo.
+    </p>
+  </div>
+
+  <script>
+    const out = document.getElementById('out');
+
+    function log(msg) {
+      out.textContent += msg + "\n";
+    }
+
+    function testSupport() {
+      out.textContent = "";
+      log("User agent: " + navigator.userAgent);
+      log("showOpenFilePicker: " + ("showOpenFilePicker" in window));
+      log("showDirectoryPicker: " + ("showDirectoryPicker" in window));
+      log("FileReader: " + ("FileReader" in window));
+    }
+
+    async function openFile() {
+      try {
+        out.textContent = "";
+
+        if (!("showOpenFilePicker" in window)) {
+          log("showOpenFilePicker não disponível neste navegador.");
+          return;
+        }
+
+        const handles = await window.showOpenFilePicker();
+        const handle = handles[0];
+
+        log("Arquivo escolhido: " + handle.name);
+
+        const file = await handle.getFile();
+
+        log("Tipo MIME: " + file.type);
+        log("Tamanho: " + file.size + " bytes");
+      } catch (e) {
+        log("Erro/cancelado: " + e);
+      }
+    }
+
+    async function openDir() {
+      try {
+        out.textContent = "";
+
+        if (!("showDirectoryPicker" in window)) {
+          log("showDirectoryPicker não disponível neste navegador.");
+          return;
+        }
+
+        const dir = await window.showDirectoryPicker();
+
+        log("Pasta escolhida: " + dir.name);
+
+        for await (const item of dir.entries()) {
+          const name = item[0];
+          const handle = item[1];
+          log(handle.kind + ": " + name);
+        }
+      } catch (e) {
+        log("Erro/cancelado: " + e);
+      }
+    }
+  </script>
+</body>
+</html>
